@@ -28,7 +28,7 @@ def index():
 
 class RestaurantClass(Resource):
     def get(self):
-        # import ipdb; ipdb.set_trace()
+        # importing ipdb; ipdb.set_trace()
         restaurant_list = [
             restaurant.to_dict(rules=("-restaurant_pizzas",))
             for restaurant in Restaurant.query.all()
@@ -43,7 +43,7 @@ class RestaurantById(Resource):
     def get(self, id):
         res = Restaurant.query.filter_by(id=id).one_or_none()
 
-        # import ipdb; ipdb.set_trace()
+        # importing ipdb; ipdb.set_trace()
         if res is not None:
             return make_response(res.to_dict(), 200)
         else:
@@ -77,7 +77,7 @@ api.add_resource(PizzaClass, "/pizzas")
 
 class RestaurantPizzasClass(Resource):
     def post(self):
-        # import ipdb; ipdb.set_trace()
+        # importing ipdb; ipdb.set_trace()
         try:
             new_res_pizza = RestaurantPizza(
                 price=request.get_json()["price"],
